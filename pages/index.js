@@ -183,7 +183,11 @@ const Home = () => {
     <div>
       <Head>
         <title>Sentence To Playlist</title>
+        <html lang="en" />
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Sentence To Playlist lets you convert any sentence to a playlist. Have fun creating playlists for you and your friends!" />
       </Head>
 
       <Box minH="100vh" pos="relative" paddingBottom="50px">
@@ -196,7 +200,11 @@ const Home = () => {
             Convert any sentence you want into a Spotify playlist
         </Box>
           <Center>
-            <Input placeholder={token ? "Enter your sentence here..." : "Log in to start creating playlists"} size="lg" width="50%"
+            <Input
+              placeholder={token ? "Enter your sentence here..." : "Log in to start creating playlists"}
+              size="lg"
+              width="50%"
+              aria-label={token ? "Enter your sentence here..." : "Log in to start creating playlists"}
               value={text}
               disabled={!token}
               onChange={e => setText(e.target.value)}
@@ -217,10 +225,11 @@ const Home = () => {
           <Center marginTop="15px" marginBottom="15px">
             {
               token ?
-                <Button disabled={!text || loading} onClick={onClick}>Find Tracks!</Button> :
+                <Button disabled={!text || loading} onClick={onClick} name="Find Tracks">Find Tracks!</Button> :
                 <Button onClick={async (e) => {
                   router.push(`${SPOTIFY_ACCOUNTS_URL}/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENTID}&response_type=token&redirect_uri=${encodeURIComponent('http://localhost:3000/')}&scope=playlist-modify-public`);
-                }}>
+                }}
+                  name="Log Into Spotify">
                   Log Into Spotify!
           </Button>
             }
@@ -300,12 +309,14 @@ const Home = () => {
         <Box position="absolute" h="50px" bottom="0" width="100%" marginBottom="5px">
           <Center>
             <IconButton
+              aria-label={colorMode === "dark" ? "Light Mode" : "Dark Mode"}
               variant="ghost"
               size="lg"
               icon={colorMode === "dark" ? <FaSun /> : <FaMoon />}
               onClick={() => toggleColorMode()}
               marginRight='10px' />
             <IconButton
+              aria-label="Github Repo"
               variant="ghost"
               size="lg"
               icon={<FaGithub />}
