@@ -227,7 +227,7 @@ const Home = () => {
               token ?
                 <Button disabled={!text || loading} onClick={onClick} name="Find Tracks">Find Tracks!</Button> :
                 <Button onClick={async (e) => {
-                  router.push(`${SPOTIFY_ACCOUNTS_URL}/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENTID}&response_type=token&redirect_uri=${encodeURIComponent('http://localhost:3000/')}&scope=playlist-modify-public`);
+                  router.push(`${SPOTIFY_ACCOUNTS_URL}/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENTID}&response_type=token&redirect_uri=${encodeURIComponent(process.env.NEXT_PUBLIC_RECIRECT)}&scope=playlist-modify-public`);
                 }}
                   name="Log Into Spotify">
                   Log Into Spotify!
