@@ -5,7 +5,7 @@ import TrackCard from '../components/TrackCard';
 import { useSpring, animated } from 'react-spring';
 import { Box, Input, Center, Button, IconButton, Spinner, Text, Icon, useToast, useColorMode } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
-import { BsCaretLeftFill, BsCaretRightFill, BsDownload, BsInfoCircle } from "react-icons/bs";
+import { BsCaretLeftFill, BsCaretRightFill, BsInfoCircle, BsPlus } from "react-icons/bs";
 import { FaGithub, FaSun, FaMoon } from "react-icons/fa";
 
 const mstoMin = (ms) => {
@@ -218,7 +218,7 @@ const Home = () => {
             token &&
             <Center color="GrayText" alignItems="center">
               <Icon as={BsInfoCircle} w={4} marginRight="5px" height='100%' />
-              <Text textAlign="center" marginTop="2px">Use comma ',' as a seperator</Text>
+              <Text textAlign="center" marginTop="2px">Use comma ',' as a separator</Text>
             </Center>
           }
 
@@ -265,7 +265,7 @@ const Home = () => {
                     disabled={indices[ind] === word.items.length - 1 || !word.items || word.items.length === 0}
                   />
                   <IconButton
-                    icon={<BsDownload />}
+                    icon={<BsPlus />}
                     marginLeft="10px"
                     aria-label="Get More Tracks"
                     title="Get More Tracks"
